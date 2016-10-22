@@ -46,7 +46,7 @@ find_sources_files(Path) ->
     [filename:join(Path, Mod) || Mod <- filelib:wildcard("*.erl", Path)].
 
 check_todo_mod(ModPath, Matches) ->
-    {ok, Bin} = file:read_file(ModPath, [read]),
+    {ok, Bin} = file:read_file(ModPath),
     case find_todo_lines(Bin) of
         [] -> Matches;
         Lines -> [{ModPath, Lines} | Matches]
